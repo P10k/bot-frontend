@@ -73,9 +73,9 @@ function ChatBox() {
     <div className="w-full h-full bg-white flex flex-col">
 
       {/* Header */}
-      <div className="bg-[#e8590c] text-white px-5 py-4 text-lg font-semibold">
+      <div className="bg-[#e8590c] text-white px-5 py-4 text-lg font-semibold flex justify-between items-center">
 
-        AI Admission Assistant
+        <span>AI Admission Assistant</span>
 
       </div>
 
