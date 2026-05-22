@@ -70,7 +70,7 @@ function ChatBox() {
 
   return (
 
-    <div className="w-full h-full bg-white flex flex-col">
+    <div className="w-full h-full bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden">
 
       {/* Header */}
       <div className="bg-[#e8590c] text-white px-5 py-4 text-lg font-semibold flex justify-between items-center">
