@@ -1,13 +1,39 @@
+import { useState } from "react";
+
 import ChatBox from "./components/ChatBox";
 
 
 function App() {
 
+  const [open, setOpen] = useState(false)
+
   return (
 
-    <div className="fixed bottom-5 right-5 w-[380px] h-[500px] shadow-2xl rounded-3xl overflow-hidden border border-gray-200">
+    <div>
 
-      <ChatBox />
+      {/* Floating Button */}
+      <button
+
+        onClick={() => setOpen(!open)}
+
+        className="fixed bottom-5 right-5 w-16 h-16 rounded-full bg-[#e8590c] text-white text-3xl shadow-2xl hover:bg-[#d64e00] transition-all z-50"
+      >
+
+        💬
+
+      </button>
+
+
+      {/* Chat Widget */}
+      {open && (
+
+        <div className="fixed bottom-24 right-5 w-[95vw] sm:w-[380px] h-[80vh] sm:h-[650px] bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200 z-50">
+
+          <ChatBox />
+
+        </div>
+
+      )}
 
     </div>
   );
