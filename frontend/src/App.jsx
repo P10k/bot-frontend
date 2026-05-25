@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import ChatBox from "./components/ChatBox";
+import chat_icon from "./assets/chat_icon.png";
 
 
 function App() {
@@ -16,10 +17,14 @@ function App() {
 
         onClick={() => setOpen(!open)}
 
-        className="fixed bottom-5 right-5 w-16 h-16 rounded-full bg-[#e8590c] text-white text-3xl shadow-2xl hover:bg-[#d64e00] transition-all z-50"
+        className="fixed bottom-5 right-5 w-16 h-16 rounded-full bg-[#e8590c] text-white shadow-2xl hover:bg-[#d64e00] transition-all z-50"
       >
 
-        🤖
+        <img
+          src={chat_icon}
+          alt="Chat Icon"
+          className="w-8 h-8 mx-auto my-auto"
+        />
 
       </button>
 
