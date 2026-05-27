@@ -85,7 +85,7 @@ function Admin() {
 
   return (
 
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen scroll-auto bg-gray-100 p-8">
 
       <div className="max-w-5xl mx-auto">
 
@@ -196,13 +196,13 @@ function Admin() {
           </div>
 
 
-          <div className="overflow-x-auto">
+          <div className="overflow-auto max-h-[70vh] rounded-xl border">
 
             <table className="w-full">
 
-              <thead>
+              <thead className="sticky top-0 bg-white z-10">
 
-                <tr className="border-b">
+                <tr className="border-b odd:bg-gray-50 hover:bg-gray-100 transition">
 
                   <th className="text-left p-3">Course</th>
                   <th className="text-left p-3">Duration</th>
