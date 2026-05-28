@@ -67,21 +67,6 @@ function Admin() {
   };
 
 
-  const rebuildIndex = async () => {
-
-    try {
-
-      await API.post("/admin/rebuild-index");
-
-      alert("FAISS index rebuilt successfully");
-
-    } catch (error) {
-
-      console.log(error);
-
-    }
-  };
-
 
   return (
 
@@ -183,15 +168,6 @@ function Admin() {
               Courses
 
             </h2>
-
-            <button
-              onClick={rebuildIndex}
-              className="bg-green-600 text-white px-5 py-2 rounded-xl"
-            >
-
-              Rebuild AI Index
-
-            </button>
 
           </div>
 
