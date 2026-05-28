@@ -6,6 +6,7 @@ import API from "../services/api";
 function Admin() {
 
   const [courses, setCourses] = useState([]);
+  const [showCourses, setShowCourses] = useState(false);
 
   const [form, setForm] = useState({
     course: "",
@@ -48,20 +49,26 @@ function Admin() {
 
     try {
 
-      await API.post("/admin/courses", form);
+      const response = await API.post("/admin/courses", form);
 
-      await fetchCourses();
+      if (response.status === 200 || response.status === 201) {
 
-      setForm({
-        course: "",
-        duration: "",
-        fees: "",
-        campus: ""
-      });
+        alert("Course added successfully!");
+
+        await fetchCourses();
+
+        setForm({
+          course: "",
+          duration: "",
+          fees: "",
+          campus: ""
+        });
+      }
 
     } catch (error) {
 
       console.log(error);
+      alert("Failed to add course!");
 
     }
   };
@@ -70,7 +77,7 @@ function Admin() {
 
   return (
 
-    <div className="min-h-screen scroll-auto bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-8">
 
       <div className="max-w-5xl mx-auto">
 
@@ -146,6 +153,8 @@ function Admin() {
 
           </div>
 
+          <div className="flex gap-4">
+
           <button
             onClick={addCourse}
             className="mt-4 bg-blue-600 text-white px-6 py-3 rounded-xl"
@@ -155,30 +164,29 @@ function Admin() {
 
           </button>
 
+          <button
+            onClick={() => setShowCourses(!showCourses)}
+            className="mt-4 bg-green-600 text-white px-6 py-3 rounded-xl"
+          >
+            {showCourses ? "Hide Courses" : "Show Courses"}   
+
+          </button>
+          </div>
+
         </div>
 
 
-        {/* Courses Table */}
+        {showCourses &&
         <div className="bg-white rounded-2xl shadow p-6">
 
-          <div className="flex justify-between items-center mb-6">
 
-            <h2 className="text-xl font-semibold">
-
-              Courses
-
-            </h2>
-
-          </div>
-
-
-          <div className="overflow-auto max-h-[70vh] rounded-xl border">
+          <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 max-h-[80vh] rounded-xl border">
 
             <table className="w-full">
 
               <thead className="sticky top-0 bg-white z-10">
 
-                <tr className="border-b odd:bg-gray-50 hover:bg-gray-100 transition">
+                <tr className="border-b bg-gray-300 hover:bg-gray-400 transition">
 
                   <th className="text-left p-3">Course</th>
                   <th className="text-left p-3">Duration</th>
@@ -214,6 +222,7 @@ function Admin() {
           </div>
 
         </div>
+        }
 
       </div>
 
